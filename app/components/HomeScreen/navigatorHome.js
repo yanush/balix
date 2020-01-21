@@ -5,12 +5,6 @@ import commonRoutes, {commonRouteConfig} from '../common/routes/commonRoutes';
 import Style from '../../helpers/style/style';
 import Routes from '../Routes';
 
-// export const routeNames = {
-// 	HOME: 'Home',
-// 	COMMENTS: 'Comments',
-// 	MAIL: 'Mail',
-// };
-
 export default createStackNavigator(
 	{
 		...commonRoutes,
@@ -23,9 +17,11 @@ export default createStackNavigator(
 		initialRouteName: Routes.Screens.HOME.routeName,
 		defaultNavigationOptions: {
 			headerStyle: {
-				backgroundColor: Style.colors.bar,
+				backgroundColor: Style.colors.bar
 			},
 			headerTintColor: Style.colors.icon,
+			
 		},
+		
 	},
 );

@@ -19,6 +19,8 @@ class Header extends Component {
 		this.openIconBox = new Animated.Value(0);
 		this.iconOpacity = new Animated.Value(1);
 		this.iconWidth = new Animated.Value(70);
+		this.indicatorOpacity = new Animated.Value(1);
+		this.indicatorWidth = new Animated.Value(200);
 	}
 
 	componentDidMount() {
@@ -26,15 +28,16 @@ class Header extends Component {
 			this.startInputAnimation();
 		}
 		if (this.props.state.routeName === Routes.Screens.PROFILE.routeName && this.props.getParam('userData') && this.props.getParam('userData').userId !== this.props.userLogin.userId) {
-			Animated.parallel([
-				Animated.timing(this.iconOpacity, {
-					toValue: 0,
-				}),
-				Animated.timing(this.iconWidth, {
-					toValue: 0,
-				}),
-			]).start();
+			this.hideIndicator();
 		}
+	}
+
+	hideIndicator() {
+		Animated.parallel([
+			Animated.timing(this.indicatorOpacity, {
+				toValue: 0,
+			})
+		]).start();
 	}
 
 	startInputAnimation() {
@@ -46,17 +49,23 @@ class Header extends Component {
 				Animated.timing(this.iconWidth, {
 					toValue: 0,
 				}),
+				Animated.timing(this.indicatorOpacity, {
+					toValue: 0
+				}),
+				Animated.timing(this.indicatorWidth, {
+					toValue: 0
+				})
 			]),
 			Animated.parallel([
 				Animated.timing(this.opacityInput, {
 					toValue: 1,
 				}),
 				Animated.timing(this.openInputAnim, {
-					toValue: 85,
+					toValue: 1,
 				}),
 				Animated.timing(this.openIconBox, {
 					toValue: 1,
-				}),
+				})
 			]),
 		]).start();
 	}
@@ -72,7 +81,7 @@ class Header extends Component {
 	render() {
 		return (
 			<View style={styles.header}>
-				<Animated.View style={{...styles.leftSide, opacity: this.iconOpacity}}>
+				<Animated.View style={{...styles.leftSide, opacity: this.indicatorOpacity, maxWidth: this.indicatorWidth, maxHeight: this.indicatorWidth}}>
 					{
 						(this.props.state.routeName === Routes.Screens.PROFILE.routeName && this.props.getParam('userData') && this.props.getParam('userData').userId === this.props.userLogin.userId) ?
 							null :
@@ -91,12 +100,9 @@ class Header extends Component {
 									<Animated.View style={
 										{
 											...styles.inputBox,
-											width: this.openInputAnim.interpolate({
-												inputRange: [0, 85],
-												outputRange: ['0%', '85%'],
-											}),
+											flexGrow: this.openInputAnim,
 											paddingHorizontal: this.openInputAnim.interpolate({
-												inputRange: [0, 85],
+												inputRange: [0, 1],
 												outputRange: [0, 10],
 											}),
 											opacity: this.opacityInput,
@@ -125,20 +131,18 @@ class Header extends Component {
 								</TouchableHighlight>
 							)
 					}
-					<Animated.View style={{
-						opacity: this.iconOpacity,
-						maxWidth: this.iconWidth,
-					}}
-					>
+					<Animated.View style={{opacity: this.iconOpacity, maxWidth: this.iconWidth}}>
 						<TouchableHighlight onPress={this.navigateTo.bind(this, Routes.Navigators.MAIL.routeName)}>
 							<Icon color={Style.colors.icon} name={iconNames.LETTER} size={Style.sizes.icon}
 								  style={styles.icon}/>
 						</TouchableHighlight>
 					</Animated.View>
-					<TouchableHighlight onPress={this.toggleMenu.bind(this)}>
-						<Icon color={Style.colors.icon} name={iconNames.MENU} size={Style.sizes.icon}
-							  style={styles.icon}/>
-					</TouchableHighlight>
+					<Animated.View style={{opacity: this.iconOpacity, maxWidth: this.iconWidth}}>
+						<TouchableHighlight onPress={this.toggleMenu.bind(this)}>
+							<Icon color={Style.colors.icon} name={iconNames.MENU} size={Style.sizes.icon}
+								style={styles.icon}/>
+						</TouchableHighlight>						
+					</Animated.View>
 				</View>
 			</View>
 		);
@@ -160,6 +164,9 @@ const styles = StyleSheet.create({
 		// borderColor: 'yellow',
 		// borderWidth: 1,
 		// overflow: 'visible',
+		position: 'absolute',
+		top: -25,
+		left: -15
 	},
 	rightSide: {
 		flexDirection: 'row',
@@ -193,6 +200,7 @@ const styles = StyleSheet.create({
 		justifyContent: 'flex-end',
 		alignItems: 'center',
 		flexDirection: 'row',
+		marginRight: 15
 	},
 	inputBox: {
 		height: '80%',
