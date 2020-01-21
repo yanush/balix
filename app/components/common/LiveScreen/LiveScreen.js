@@ -35,6 +35,13 @@ class LiveScreen extends Component {
     this.groupEmojiPosition = new Animated.Value(0);
   }
 
+  componentWillUnmount() {
+    if(this.emojiBarTimer) {
+      clearTimeout(this.emojiBarTimer);
+      this.emojiBarTimer = undefined;
+    }
+  }
+
   screenFocused() {
     let user = this.props.navigation.getParam('userData');
     this.setState({userData: user});
