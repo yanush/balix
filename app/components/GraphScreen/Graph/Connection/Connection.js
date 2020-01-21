@@ -6,6 +6,7 @@ import Popup from './Popup';
 import userService from '../../../../demoDB/Users/userService';
 import { commonRoutesName } from '../../../common/routes/commonRoutes';
 import { connect } from 'react-redux';
+import Routes from '../../../Routes';
 
 class Connection extends Component {
 
@@ -76,7 +77,7 @@ class Connection extends Component {
   }
 
   navigateToProfile(userData) {
-    this.props.navigate(commonRoutesName.PROFILE_VIEW, {userData: userData})
+    this.props.navigate(Routes.Screens.PROFILE.routeName, {userData: userData})
   }
 
   render() {

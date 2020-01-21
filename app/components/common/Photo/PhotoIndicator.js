@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image, ScrollView, TouchableHighlight } from 'react-native';
-import { textColor, backgroundColor, lightMainColor, darkMainColor } from '../../../common/style';
+import { StyleSheet, Text, View } from 'react-native';
+import Style from '../../../helpers/style/style';
 import Icon, {iconNames} from '../Icon/Icon';
 import { withComma } from '../../../common/numberMethods';
 import Svg, { Polygon } from 'react-native-svg';
@@ -19,13 +19,13 @@ export default class PhotoIndicator extends Component {
         </Svg>
         <View style={styles.indicatorBox}>
           <View style={styles.iconBox}>
-            <Icon name={iconNames.DOLLAR} size={15} color={lightMainColor} />
+            <Icon name={iconNames.DOLLAR} size={15} color={Style.colors.lightMain} />
           </View>
           <Text style={styles.number}>{withComma(this.props.indicators.cash)}</Text>
         </View>
         <View style={styles.indicatorBox}>
           <View style={styles.iconBox}>
-            <Icon name={iconNames.HEART} size={15} color={lightMainColor} />
+            <Icon name={iconNames.HEART} size={15} color={Style.colors.lightMain} />
           </View>
           <Text style={{...styles.number, paddingHorizontal: 3}}>{withComma(this.props.indicators.hearts)}</Text>
         </View>

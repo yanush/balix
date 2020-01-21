@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image, ScrollView, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { textColor } from '../../../../common/style';
 
 export default class SingleComment extends Component {

@@ -3,23 +3,24 @@ import {createStackNavigator} from 'react-navigation-stack';
 import Home from './Home';
 import commonRoutes, {commonRouteConfig} from '../common/routes/commonRoutes';
 import Style from '../../helpers/style/style';
+import Routes from '../Routes';
 
-export const routeNames = {
-	HOME: 'Home',
-	COMMENTS: 'Comments',
-	MAIL: 'Mail',
-};
+// export const routeNames = {
+// 	HOME: 'Home',
+// 	COMMENTS: 'Comments',
+// 	MAIL: 'Mail',
+// };
 
 export default createStackNavigator(
 	{
 		...commonRoutes,
-		[routeNames.HOME]: {
+		[Routes.Screens.HOME.routeName]: {
 			screen: Home,
 		},
 	},
 	{
 		// ...commonRouteConfig,
-		initialRouteName: routeNames.HOME,
+		initialRouteName: Routes.Screens.HOME.routeName,
 		defaultNavigationOptions: {
 			headerStyle: {
 				backgroundColor: Style.colors.bar,

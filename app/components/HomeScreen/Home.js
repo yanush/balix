@@ -3,12 +3,11 @@ import {StyleSheet, Text, View, ScrollView, FlatList, SafeAreaView} from 'react-
 import imageService from '../../demoDB/Images/imageService';
 import Photo from '../common/Photo/Photo';
 import Header from '../common/Header/Header';
-import {commonRoutesName} from '../common/routes/commonRoutes';
 import Style from '../../helpers/style/style';
 import userService from '../../demoDB/Users/userService';
 import ProfileSymbol from '../common/ProfileSymbol/ProfileSymbol';
-import {routeNames} from '../navigatorTabs';
 import AppNavigator from '../AppNavigator';
+import Routes from '../Routes';
 
 export default class Home extends Component {
 	static navigationOptions = ({navigation}) => {
@@ -33,18 +32,18 @@ export default class Home extends Component {
 	}
 
 	onTitlePress(user) {
-		this.props.navigation.navigate(commonRoutesName.PROFILE_VIEW, {userData: user});
+		this.props.navigation.navigate(Routes.Screens.PROFILE, {userData: user});
 	}
 
 	symbolPressed(index) {
 		let user = this.state.allStory_Live[index];
 		if (user.live) {
-			AppNavigator.getRef()._navigation.navigate(routeNames.LIVE_SCREEN, {
+			AppNavigator.getRef()._navigation.navigate(Routes.Screens.LIVE.routeName, {
 				userData: user,
 				next: this.state.allStory_Live.slice(index, this.state.allStory_Live.length),
 			});
 		} else if (user.story) {
-			AppNavigator.getRef()._navigation.navigate(routeNames.STORY_SCREEN, {
+			AppNavigator.getRef()._navigation.navigate(Routes.Screens.STORY.routeName, {
 				userData: user,
 				next: this.state.allStory_Live.slice(index, this.state.allStory_Live.length),
 			});

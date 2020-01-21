@@ -8,7 +8,7 @@ import {handleSearch} from '../../../store/search/searchActions';
 import {toggleButtons} from '../../../store/cashButtons/cashButtonsActions';
 import Icon, {iconNames} from '../Icon/Icon';
 import CashIndicator from './CashIndicator/CashIndicator';
-import {commonRoutesName} from '../routes/commonRoutes';
+import Routes from '../../Routes';
 
 class Header extends Component {
 	constructor(props) {
@@ -22,10 +22,10 @@ class Header extends Component {
 	}
 
 	componentDidMount() {
-		if (this.props.state.routeName === commonRoutesName.SEARCH_SCREEN) {
+		if (this.props.state.routeName === Routes.Screens.SEARCH.routeName) {
 			this.startInputAnimation();
 		}
-		if (this.props.state.routeName === commonRoutesName.PROFILE_VIEW && this.props.getParam('userData') && this.props.getParam('userData').userId !== this.props.userLogin.userId) {
+		if (this.props.state.routeName === Routes.Screens.PROFILE.routeName && this.props.getParam('userData') && this.props.getParam('userData').userId !== this.props.userLogin.userId) {
 			Animated.parallel([
 				Animated.timing(this.iconOpacity, {
 					toValue: 0,
@@ -74,7 +74,7 @@ class Header extends Component {
 			<View style={styles.header}>
 				<Animated.View style={{...styles.leftSide, opacity: this.iconOpacity}}>
 					{
-						(this.props.state.routeName === commonRoutesName.PROFILE_VIEW && this.props.getParam('userData') && this.props.getParam('userData').userId === this.props.userLogin.userId) ?
+						(this.props.state.routeName === Routes.Screens.PROFILE.routeName && this.props.getParam('userData') && this.props.getParam('userData').userId === this.props.userLogin.userId) ?
 							null :
 							<CashIndicator
 								openTabs={this.props.toggleButtons.bind(this)}
@@ -85,7 +85,7 @@ class Header extends Component {
 
 				<View style={styles.rightSide}>
 					{
-						(this.props.state.routeName === commonRoutesName.SEARCH_SCREEN) ?
+						(this.props.state.routeName === Routes.Screens.SEARCH.routeName) ?
 							(
 								<View style={styles.searchBox}>
 									<Animated.View style={
@@ -119,7 +119,7 @@ class Header extends Component {
 							) :
 							(
 								<TouchableHighlight
-									onPress={this.navigateTo.bind(this, commonRoutesName.SEARCH_SCREEN)}>
+									onPress={this.navigateTo.bind(this, Routes.Navigators.SEARCH.routeName)}>
 									<Icon color={Style.colors.icon} name={iconNames.SEARCH} size={Style.sizes.icon}
 										  style={styles.icon}/>
 								</TouchableHighlight>
@@ -130,7 +130,7 @@ class Header extends Component {
 						maxWidth: this.iconWidth,
 					}}
 					>
-						<TouchableHighlight onPress={this.navigateTo.bind(this, commonRoutesName.MAIL)}>
+						<TouchableHighlight onPress={this.navigateTo.bind(this, Routes.Navigators.MAIL.routeName)}>
 							<Icon color={Style.colors.icon} name={iconNames.LETTER} size={Style.sizes.icon}
 								  style={styles.icon}/>
 						</TouchableHighlight>

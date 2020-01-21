@@ -7,7 +7,7 @@ import EmojiBox from '../common/Photo/EmojiBox/EmojiBox';
 import PhotoIndicator from '../common/Photo/PhotoIndicator';
 import ProfileSymbol from '../common/ProfileSymbol/ProfileSymbol';
 import {withComma} from '../../common/numberMethods';
-import {commonRoutesName} from '../common/routes/commonRoutes';
+import Routes from '../Routes';
 
 export default class PhotoScreen extends Component {
   // Params = [ userImages, selectedImage, userData ] ||
@@ -123,7 +123,7 @@ export default class PhotoScreen extends Component {
   }
 
   navigateToProfile() {
-    this.props.navigation.navigate(commonRoutesName.PROFILE_VIEW, {userData: this.state.userData});
+    this.props.navigation.navigate(Routes.Screens.PHOTO.routeName, {userData: this.state.userData});
   }
 
   render() {
@@ -220,7 +220,7 @@ export default class PhotoScreen extends Component {
             <Text style={styles.content}>{this.state.imageData.title}</Text>
           </View>
           <TouchableHighlight
-            onPress={() => this.props.navigation.navigate(commonRoutesName.COMMENTS, {
+            onPress={() => this.props.navigation.navigate(Routes.Screens.COMMENTS.routeName, {
               comments: this.state.comments,
             })}>
             <Text

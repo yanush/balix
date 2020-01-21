@@ -2,23 +2,24 @@ import {createStackNavigator} from 'react-navigation-stack';
 import Graph from './Graph/Graph';
 import commonRoutes from '../common/routes/commonRoutes';
 import Style from '../../helpers/style/style';
+import Routes from '../Routes';
 
-export const graphRoutesName = {
-	GRAPH: 'Graph',
-	MAIL: 'Mail',
-	PROFILE_VIEW: 'ProfileView',
-};
+// export const graphRoutesName = {
+// 	GRAPH: 'Graph',
+// 	MAIL: 'Mail',
+// 	PROFILE_VIEW: 'ProfileView',
+// };
 
 export default createStackNavigator(
 	{
 		...commonRoutes,
-		[graphRoutesName.GRAPH]: {
+		[Routes.Screens.GRAPH.routeName]: {
 			screen: Graph,
 		},
 	},
 	{
 		// ...commonRouteConfig,
-		initialRouteName: graphRoutesName.GRAPH,
+		initialRouteName: Routes.Screens.GRAPH.routeName,
 		defaultNavigationOptions: {
 			headerStyle: {
 				backgroundColor: Style.colors.bar,

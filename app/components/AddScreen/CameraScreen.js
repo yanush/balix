@@ -5,9 +5,9 @@ import Style from '../../helpers/style/style';
 import AddHeader from './AddHeader';
 import AddBottomBar from './AddBottomBar';
 import { RNCamera } from 'react-native-camera';
-import { addRouteNames } from './navigatorAdd';
 import CameraRoll from "@react-native-community/cameraroll";
 import {PermissionsAndroid} from 'react-native';
+import Routes from '../Routes';
 
 export default class CameraScreen extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -42,7 +42,7 @@ export default class CameraScreen extends Component {
       const options = { quality: 0.5, base64: true };
       const data = await this.camera.takePictureAsync(options);
       this.saveToCameraRoll(data.uri);
-      this.navigateTo(addRouteNames.PREVIEW_PHOTO, { uri: data.uri });
+      this.navigateTo(Routes.Screens.PREVIEW_PHOTO.routeName, { uri: data.uri });
     }
   }
 

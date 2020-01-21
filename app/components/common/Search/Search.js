@@ -4,7 +4,7 @@ import Header from '../Header/Header';
 import Style from '../../../helpers/style/style';
 import {connect} from 'react-redux';
 import Result from './Result';
-import {commonRoutesName} from '../routes/commonRoutes';
+import Routes from '../../Routes';
 
 class Search extends Component {
 	static navigationOptions = ({navigation}) => {
@@ -20,19 +20,12 @@ class Search extends Component {
 	render() {
 		return (
 			<View style={styles.container}>
-				{/* {
-          this.props.searchResult.map((result, i) => (
-            <TouchableHighlight key={i} onPress={this.navigateTo.bind(this, commonRoutesName.PROFILE_VIEW, { userData: result })}>
-              <Result data={result} />
-            </TouchableHighlight>
-          ))
-        } */}
 				<FlatList
 					keyExtractor={item => item.userId.toString()}
 					data={this.props.searchResult}
 					renderItem={({item}) => (
 						<TouchableHighlight
-							onPress={this.navigateTo.bind(this, commonRoutesName.PROFILE_VIEW, {userData: item})}>
+							onPress={this.navigateTo.bind(this, Routes.Screens.PROFILE.routeName, {userData: item})}>
 							<Result data={item}/>
 						</TouchableHighlight>
 					)}

@@ -4,31 +4,29 @@ import {createStackNavigator} from 'react-navigation-stack';
 import Style from '../helpers/style/style';
 import NavigatorTabs from './navigatorTabs';
 import LiveScreen from './common/LiveScreen/LiveScreen';
+import StoryScreen from './common/StoryScreen';
 import NavigatorAdd from './AddScreen/navigatorAdd';
-
-export const routeNames = {
-  NAVIGATOR_TABS: 'NavigatorTabs',
-	NAVIGATOR_ADD: 'NavigatorAdd',
-  LIVE_SCREEN: 'LiveScreen',
-};
+import Routes from './Routes';
 
 export default createAppContainer(createStackNavigator(
   {
-    [routeNames.NAVIGATOR_TABS]: {
+    [Routes.Navigators.TABS.routeName]: {
       screen: NavigatorTabs,
     },
-		[routeNames.NAVIGATOR_ADD]: {
-			// screen: AddScreen
+		[Routes.Navigators.ADD.routeName]: {
 			screen: NavigatorAdd,
 		},
-    [routeNames.LIVE_SCREEN]: {
+    [Routes.Screens.LIVE.routeName]: {
       screen: LiveScreen,
     },
+    [Routes.Screens.STORY.routeName]: {
+      screen: StoryScreen
+    }
   },
   {
 		mode: 'modal', //must be modal for transparent background
 		headerMode: 'none',
-    initialRouteName: routeNames.NAVIGATOR_TABS,
+    initialRouteName: Routes.Navigators.TABS.routeName,
     defaultNavigationOptions: {
 			gestureEnabled: false,
 			cardShadowEnabled: false,

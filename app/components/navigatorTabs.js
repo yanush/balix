@@ -5,67 +5,38 @@ import NavigatorHome from './HomeScreen/navigatorHome';
 import NavigatorProfile from './ProfileScreen/navigatorProfile';
 import TabBar from './TabBar';
 import NavigatorGraph from './GraphScreen/navigatorGraph';
-import NavigatorAdd from './AddScreen/navigatorAdd';
-import RecentActionsScreen from './RecentActionsScreen/RecentActionsScreen';
-import BuyPackage from './common/BuyPackage/BuyPackage';
-import WithdrawScreen from './common/WithdrawScreen';
-import LiveScreen from './common/LiveScreen/LiveScreen';
-import StoryScreen from './common/StoryScreen';
 import NavigatorPhoto from './PhotoScreen/navigatorPhoto';
-
-export const routeNames = {
-  HOME: 'HomeScreen',
-  PROFILE: 'ProfileScreen',
-  GRAPH: 'GraphScreen',
-  ADD: 'AddScreen',
-  NAVIGATOR_ADD: 'NavigatorAdd',
-  RECENT_ACTIONS: 'RecentActionsScreen',
-  BUY_PACKAGE: 'BuyPackage',
-  WITHDRAW_SCREEN: 'WithdrawScreen',
-  LIVE_SCREEN: 'LiveScreen',
-  STORY_SCREEN: 'StoryScreen',
-  PHOTO_NAVIGATOR: 'PhotoNavigator'
-};
+import NavigatorRecentActions from './RecentActionsScreen/navigatorRecentActions';
+import Routes from './Routes';
+import NavigatorMail from './common/Mail/navigatorMail';
+import NavigatorSearch from './common/Search/navigatorSearch';
 
 export default createBottomTabNavigator(
   {
-    [routeNames.HOME]: {
-      // screen: HomeScreen
+    [Routes.Navigators.HOME.routeName]: {
       screen: NavigatorHome,
     },
-    [routeNames.PROFILE]: {
-      // screen: ProfileScreen
+    [Routes.Navigators.PROFILE.routeName]: {
       screen: NavigatorProfile,
     },
-    [routeNames.GRAPH]: {
-      // screen: GraphScreen
+    [Routes.Navigators.GRAPH.routeName]: {
       screen: NavigatorGraph,
     },
-    // [routeNames.ADD]: {
-    //   // screen: AddScreen
-    //   screen: NavigatorAdd,
-    // },
-    [routeNames.RECENT_ACTIONS]: {
-      screen: RecentActionsScreen,
+    [Routes.Navigators.RECENT_ACTIONS.routeName]: {
+      screen: NavigatorRecentActions,
     },
-    [routeNames.BUY_PACKAGE]: {
-      screen: BuyPackage,
-    },
-    [routeNames.WITHDRAW_SCREEN]: {
-      screen: WithdrawScreen,
-    },
-    // [routeNames.LIVE_SCREEN]: {
-    //   screen: LiveScreen,
-    // },
-    [routeNames.STORY_SCREEN]: {
-      screen: StoryScreen,
-    },
-    [routeNames.PHOTO_NAVIGATOR]: {
+    [Routes.Navigators.PHOTO.routeName]: {
       screen: NavigatorPhoto
-    }
+    },
+    [Routes.Navigators.MAIL.routeName]: {
+      screen: NavigatorMail
+    },
+    [Routes.Navigators.SEARCH.routeName]: {
+        screen: NavigatorSearch
+    },
   },
   {
-    initialRouteName: routeNames.HOME,
+    initialRouteName: Routes.Navigators.HOME.routeName,
     tabBarComponent: props => (
       <TabBar {...props} />
     ),

@@ -4,15 +4,10 @@ import Photo from "../Photo/Photo";
 import Comments from "../Photo/Comments/Comments";
 import ProfileView from "../../ProfileScreen/ProfileView/ProfileView";
 import ConversationView from "../Mail/ConversationView/ConversationView";
-
-export const commonRoutesName = {
-    MAIL: 'Mail',
-    SEARCH_SCREEN: 'SearchScreen',
-    PROFILE_VIEW: 'ProfileView',
-    PHOTO: 'Photo',
-    COMMENTS: 'Comments',
-    CONVERSATION_VIEW: 'ConversationView',
-};
+import Routes from '../../Routes';
+import PhotoScreen from "../../PhotoScreen/PhotoScreen";
+import NavigatorMail from '../Mail/navigatorMail';
+import NavigatorSearch from '../Search/navigatorSearch';
 
 export const commonRouteConfig = {
     transitionConfig: () => ({
@@ -24,22 +19,16 @@ export const commonRouteConfig = {
 };
 
 export default commonRoutes = {
-    [commonRoutesName.MAIL]: {
-        screen: Mail
-    },
-    [commonRoutesName.SEARCH_SCREEN]: {
-        screen: Search
-    },
-    [commonRoutesName.PROFILE_VIEW]: {
+    [Routes.Screens.PROFILE.routeName]: {
         screen: ProfileView
     },
-    // [commonRoutesName.PHOTO]: {
-    //     screen: Photo
-    // },
-    [commonRoutesName.COMMENTS]: {
+    [Routes.Screens.PHOTO.routeName]: {
+        screen: PhotoScreen
+    },
+    [Routes.Screens.COMMENTS.routeName]: {
         screen: Comments
     },
-    [commonRoutesName.CONVERSATION_VIEW]: {
+    [Routes.Screens.CONVERSATION.routeName]: {
         screen: ConversationView
     }
 };

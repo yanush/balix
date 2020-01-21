@@ -4,14 +4,14 @@ import Style from '../../../helpers/style/style';
 import { iconNames } from '../../common/Icon/Icon';
 import ProfileSymbol from '../../common/ProfileSymbol/ProfileSymbol';
 import { connect } from 'react-redux';
-import { commonRoutesName } from '../../common/routes/commonRoutes';
 import messageService from '../../../demoDB/Messages/messageService';
+import Routes from '../../Routes';
 
 class UserDetails extends Component {
 
   navigateTo(routeName) {
     let params = {};
-    if(routeName == commonRoutesName.CONVERSATION_VIEW) {
+    if(routeName == Routes.Screens.CONVERSATION.routeName) {
       const messages = messageService.getConversationMessagesByPeopleTalks(this.props.userLogin, this.props.user);
       params = {
         userLogin: this.props.userLogin,
@@ -32,7 +32,7 @@ class UserDetails extends Component {
           <View style={styles.user}>
             <View style={styles.imageBox}>
               <ProfileSymbol
-                iconPress={(this.props.user.userId == this.props.userLogin.userId) ? (undefined) : (this.navigateTo.bind(this, commonRoutesName.CONVERSATION_VIEW))}
+                iconPress={(this.props.user.userId == this.props.userLogin.userId) ? (undefined) : (this.navigateTo.bind(this, Routes.Screens.CONVERSATION.routeName))}
                 src={this.props.user.profileImage}
                 icon={(this.props.user.userId == this.props.userLogin.userId) ? (iconNames.LIVE) : (iconNames.LETTER)}
                 size={100}

@@ -3,7 +3,7 @@ import { StyleSheet, View, Image, TouchableHighlight } from 'react-native';
 import Style from '../../helpers/style/style';
 import Icon, { iconNames } from '../common/Icon/Icon';
 import CameraRoll from "@react-native-community/cameraroll";
-import { addRouteNames } from './navigatorAdd';
+import Routes from '../Routes';
 // import Swiper from 'react-native-swiper';
 
 export default class AddBottomBar extends Component {
@@ -62,7 +62,7 @@ export default class AddBottomBar extends Component {
                 </View>
             </Swiper> */}
             <View style={styles.buttonsBox}>
-              <TouchableHighlight onPress={() => this.props.onGallery(addRouteNames.GALLERY_SCREEN)} style={styles.galleryButton}>
+              <TouchableHighlight onPress={() => this.props.onGallery(Routes.Screens.GALLERY.routeName)} style={styles.galleryButton}>
                 <Image style={{ height: '100%', width: '100%', borderRadius: 10 }} source={{uri: this.state.galleryFirstPic}} />
               </TouchableHighlight>
               <TouchableHighlight onPress={() => this.props.onPicture()} style={styles.captureButton}>

@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TouchableHighlight, Animated } from 'react-nati
 import Style from '../../../helpers/style/style';
 import { connect } from 'react-redux';
 import RequestPass from './RequestPass/RequestPass';
-import { routeNames } from '../../navigatorTabs';
+import Routes from '../../Routes';
 
 class CashButtons extends Component {
 
@@ -19,7 +19,7 @@ class CashButtons extends Component {
   checkPassword(pass) {
     if(pass == this.props.userLogin.password) {
       this.setState({ authError: '', showAuthBox: false });
-      this.navigateTo(routeNames.WITHDRAW_SCREEN);
+      this.navigateTo(Routes.Screens.WITHDRAW);
     } else {
       this.setState({ authError: 'Password wrong' })
     }
@@ -53,7 +53,7 @@ class CashButtons extends Component {
     return (
         <Animated.View style={{...styles.dropDownBox, transform: [ {translateY: this.dropDownBottom} ]}}>
           <View style={{flexDirection: 'row'}}>
-            <TouchableHighlight onPress={() => this.navigateTo(routeNames.BUY_PACKAGE)} style={styles.dropDownButton}>
+            <TouchableHighlight onPress={() => this.navigateTo(Routes.Screens.BUY_PACKAGE)} style={styles.dropDownButton}>
               <Text style={{color: Style.colors.text, letterSpacing: 1}}>Buy Cash</Text>
             </TouchableHighlight>
             <TouchableHighlight onPress={() => this.setState({ showAuthBox: !this.state.showAuthBox })} style={styles.dropDownButton}>

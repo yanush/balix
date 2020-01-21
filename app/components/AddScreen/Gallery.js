@@ -55,7 +55,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Style.colors.background,
-    alignItems: 'center',
     paddingTop: 60
   },
   picturesContainer : {

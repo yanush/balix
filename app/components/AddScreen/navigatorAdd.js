@@ -3,27 +3,28 @@ import CameraScreen from './CameraScreen';
 import PreviewPhoto from './PreviewPhoto';
 import Gallery from './Gallery';
 import Style from '../../helpers/style/style';
+import Routes from '../Routes';
 
-export const addRouteNames = {
-	CAMERA_SCREEN: 'CameraScreen',
-	PREVIEW_PHOTO: 'PreviewPhoto',
-	GALLERY_SCREEN: 'GalleryScreen',
-};
+// export const addRouteNames = {
+// 	CAMERA_SCREEN: 'CameraScreen',
+// 	PREVIEW_PHOTO: 'PreviewPhoto',
+// 	GALLERY_SCREEN: 'GalleryScreen',
+// };
 
 export default createStackNavigator(
 	{
-		[addRouteNames.CAMERA_SCREEN]: {
+		[Routes.Screens.CAMERA.routeName]: {
 			screen: CameraScreen,
 		},
-		[addRouteNames.PREVIEW_PHOTO]: {
+		[Routes.Screens.PREVIEW_PHOTO.routeName]: {
 			screen: PreviewPhoto,
 		},
-		[addRouteNames.GALLERY_SCREEN]: {
+		[Routes.Screens.GALLERY.routeName]: {
 			screen: Gallery,
 		},
 	},
 	{
-		initialRouteName: addRouteNames.CAMERA_SCREEN,
+		initialRouteName: Routes.Screens.CAMERA.routeName,
 		defaultNavigationOptions: {
 			headerStyle: {
 				backgroundColor: Style.colors.addBar,

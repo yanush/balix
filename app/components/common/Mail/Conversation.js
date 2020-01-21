@@ -4,7 +4,7 @@ import userService from '../../../demoDB/Users/userService';
 import messageService from '../../../demoDB/Messages/messageService';
 import ProfileSymbol from '../ProfileSymbol/ProfileSymbol';
 import Style from '../../../helpers/style/style';
-import { commonRoutesName } from '../routes/commonRoutes';
+import Routes from '../../Routes';
 
 export default class Conversation extends Component {
 
@@ -30,7 +30,7 @@ export default class Conversation extends Component {
     return (
         (this.state.messages && this.state.talkWith) ?
         (
-        <TouchableHighlight onPress={() => this.props.navigate(commonRoutesName.CONVERSATION_VIEW, {
+        <TouchableHighlight onPress={() => this.props.navigate(Routes.Screens.CONVERSATION.routeName, {
             conversationData: { userLogin: this.props.userLogin, messages: this.state.messages, talkWith: this.state.talkWith }
         })}>
         <View style={styles.container}>
