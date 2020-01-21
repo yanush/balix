@@ -7,7 +7,7 @@ import Style from '../../helpers/style/style';
 
 export const recentActionsRoutesName = {
     RECENT_ACTIONS: 'RecentActions'
-}
+};
 
 const RecentActionsRoutes = createStackNavigator(
     {

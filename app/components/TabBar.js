@@ -35,7 +35,8 @@ export default class TabBar extends Component {
         </TouchableHighlight>
         <View style={styles.plusTabBox}>
           <LinearGradient style={{borderRadius: 999}} colors={[Style.colors.lightMain, Style.colors.darkMain]}>
-            <TouchableHighlight onPress={() => this.navigateTo(routeNames.ADD)} style={styles.plusTab}>
+            {/*<TouchableHighlight onPress={() => this.navigateTo(routeNames.ADD)} style={styles.plusTab}>*/}
+            <TouchableHighlight onPress={() => this.navigateTo(routeNames.NAVIGATOR_ADD)} style={styles.plusTab}>
               <Icon size={Style.sizes.icon+5} name={iconNames.PLUS} color={this.props.inactiveTintColor} />
             </TouchableHighlight>
           </LinearGradient>
