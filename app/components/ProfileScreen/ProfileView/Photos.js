@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, Image, Button, TouchableOpacity } from 'react-native';
 import imageService from '../../../demoDB/Images/imageService';
 import { commonRoutesName } from '../../common/routes/commonRoutes';
+import { photoRoutesName } from '../../PhotoScreen/navigatorPhoto';
 
 export default class Photos extends Component {
 
@@ -13,7 +14,7 @@ export default class Photos extends Component {
   }
 
   goToPhoto(params) {
-    this.props.navigate(commonRoutesName.PHOTO, params);
+    this.props.navigate(photoRoutesName.PHOTO_SCREEN, params);
   }
 
   getUserImages() {

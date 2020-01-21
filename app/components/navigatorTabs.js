@@ -11,6 +11,7 @@ import BuyPackage from './common/BuyPackage/BuyPackage';
 import WithdrawScreen from './common/WithdrawScreen';
 import LiveScreen from './common/LiveScreen/LiveScreen';
 import StoryScreen from './common/StoryScreen';
+import NavigatorPhoto from './PhotoScreen/navigatorPhoto';
 
 export const routeNames = {
   HOME: 'HomeScreen',
@@ -23,6 +24,7 @@ export const routeNames = {
   WITHDRAW_SCREEN: 'WithdrawScreen',
   LIVE_SCREEN: 'LiveScreen',
   STORY_SCREEN: 'StoryScreen',
+  PHOTO_NAVIGATOR: 'PhotoNavigator'
 };
 
 export default createBottomTabNavigator(
@@ -58,6 +60,9 @@ export default createBottomTabNavigator(
     [routeNames.STORY_SCREEN]: {
       screen: StoryScreen,
     },
+    [routeNames.PHOTO_NAVIGATOR]: {
+      screen: NavigatorPhoto
+    }
   },
   {
     initialRouteName: routeNames.HOME,
