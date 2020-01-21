@@ -7,6 +7,8 @@ import LiveScreen from './common/LiveScreen/LiveScreen';
 import StoryScreen from './common/StoryScreen';
 import NavigatorAdd from './AddScreen/navigatorAdd';
 import Routes from './Routes';
+import BuyPackage from './common/BuyPackage/BuyPackage';
+import WithdrawScreen from './common/WithdrawScreen';
 
 export default createAppContainer(createStackNavigator(
   {
@@ -21,6 +23,12 @@ export default createAppContainer(createStackNavigator(
     },
     [Routes.Screens.STORY.routeName]: {
       screen: StoryScreen
+    },
+    [Routes.Screens.BUY_PACKAGE.routeName]: {
+      screen: BuyPackage
+    },
+    [Routes.Screens.WITHDRAW.routeName]: {
+      screen: WithdrawScreen
     }
   },
   {

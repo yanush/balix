@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 // Navigation
-import NavigatorTabs from './navigatorTabs';
 import NavigatorMain from './navigatorMain';
 // Components
 import {StyleSheet, Text, View, StatusBar, Animated, Dimensions, TouchableHighlight} from 'react-native';
 import SideMenu from './common/SideMenu';
 import LoginScreen from './LoginScreen/LoginScreen';
+import CashButtons from './common/CashButtons/CashButtons';
 // Redux
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
@@ -40,6 +40,7 @@ class Screen extends Component {
     return (
       <Animated.View style={{...styles.container, transform: [{translateX: this.sliderAnimation}]}}>
         <View style={styles.screen}>
+          <CashButtons />
           <StatusBar hidden/>
           <NavigatorMain
             ref={(r) => AppNavigator.setRef(r)}

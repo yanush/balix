@@ -1,9 +1,16 @@
+// Components
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableHighlight, Animated } from 'react-native';
-import Style from '../../../helpers/style/style';
-import { connect } from 'react-redux';
 import RequestPass from './RequestPass/RequestPass';
 import Routes from '../../Routes';
+import AppNavigator from '../../AppNavigator';
+
+// Redux
+import { connect } from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {toggleButtons} from '../../../store/cashButtons/cashButtonsActions';
+
+import Style from '../../../helpers/style/style';
 
 class CashButtons extends Component {
 
@@ -19,14 +26,15 @@ class CashButtons extends Component {
   checkPassword(pass) {
     if(pass == this.props.userLogin.password) {
       this.setState({ authError: '', showAuthBox: false });
-      this.navigateTo(Routes.Screens.WITHDRAW);
+      this.navigateTo(Routes.Screens.WITHDRAW.routeName);
     } else {
       this.setState({ authError: 'Password wrong' })
     }
   }
 
   navigateTo(routeName) {
-    this.props.navigate(routeName);
+    this.props.toggleButtons();
+    AppNavigator.getRef()._navigation.navigate(routeName);
   }
 
   openDropDown() {
@@ -53,7 +61,7 @@ class CashButtons extends Component {
     return (
         <Animated.View style={{...styles.dropDownBox, transform: [ {translateY: this.dropDownBottom} ]}}>
           <View style={{flexDirection: 'row'}}>
-            <TouchableHighlight onPress={() => this.navigateTo(Routes.Screens.BUY_PACKAGE)} style={styles.dropDownButton}>
+            <TouchableHighlight onPress={() => this.navigateTo(Routes.Screens.BUY_PACKAGE.routeName)} style={styles.dropDownButton}>
               <Text style={{color: Style.colors.text, letterSpacing: 1}}>Buy Cash</Text>
             </TouchableHighlight>
             <TouchableHighlight onPress={() => this.setState({ showAuthBox: !this.state.showAuthBox })} style={styles.dropDownButton}>
@@ -92,10 +100,16 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state) => {
-    return {
-      showButtons: state.cashButtons.showButtons,
-      userLogin: state.userLogin
-    }
-  };
+  return {
+    showButtons: state.cashButtons.showButtons,
+    userLogin: state.userLogin
+  }
+};
 
-  export default connect(mapStateToProps)(CashButtons);
+const mapDispatchToProps = dispatch => (
+	bindActionCreators({
+		toggleButtons,
+	}, dispatch)
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(CashButtons);
